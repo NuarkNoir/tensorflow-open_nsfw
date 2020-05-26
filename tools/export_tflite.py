@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
         sess.run(tf.global_variables_initializer())
 
-        converter = tf.contrib.lite.TFLiteConverter.from_session(sess, [model.input], [model.predictions])
+        converter = tf.compat.v1.lite.TFLiteConverter.from_session(sess, [model.input], [model.predictions])
         tflite_model = converter.convert()
 
         with open(export_path, "wb") as f:
